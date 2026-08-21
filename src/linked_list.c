@@ -43,3 +43,20 @@ void list_push_back(LinkedList *list, int value)
 
     list->size++;
 }
+
+int list_search(const LinkedList *list, int value){
+
+    Node *current = list->head;
+
+    while (current != NULL)
+    {
+        if (current->data == value)
+        {
+            return 1; // Value found
+        }
+        current = current->next;
+    }
+
+    return 0; // Value not found
+
+}
