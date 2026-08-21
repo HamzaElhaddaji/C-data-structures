@@ -60,3 +60,15 @@ int list_search(const LinkedList *list, int value){
     return 0; // Value not found
 
 }
+void list_print(const LinkedList *list){
+
+    Node *current = list->head;
+
+    while (current != NULL)
+    {
+        printf("%d -> ", current->data);
+        current = current->next;
+    }
+
+    printf("NULL\n");
+}
