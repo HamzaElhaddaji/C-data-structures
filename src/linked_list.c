@@ -72,3 +72,45 @@ void list_print(const LinkedList *list){
 
     printf("NULL\n");
 }
+
+void list_remove(LinkedList *list, int value)
+{
+    if (list == NULL || list->head == NULL)
+        return;
+
+    Node *current = list->head;
+    Node *previous = NULL;
+
+    while (current != NULL && current->data != value)
+    {
+        previous = current;
+        current = current->next;
+    }
+
+    if (current == NULL)
+        return;  // Value not found
+
+    if (previous == NULL)
+        list->head = current->next;  // Remove first node
+    else
+        previous->next = current->next;  // Remove another node
+
+    free(current);
+}
+
+void list_free(LinkedList *list)
+{
+    if (list == NULL)
+        return;
+
+    Node *current = list->head;
+
+    while (current != NULL)
+    {
+        Node *temp = current;
+        current = current->next;
+        free(temp);
+    }
+
+    list->head = NULL;
+}
