@@ -3,6 +3,9 @@
 A C99 library of common data structures. Most containers store integers.
 The trie stores strings, and the graph and disjoint sets use integer indices.
 
+Start with the [learning guide](docs/learning-guide.md) for a runnable C example,
+a suggested reading order, and exercises you can try with this library.
+
 | Header | Structure and operations |
 | --- | --- |
 | `vector.h` | Dynamic array with indexed reads, updates, insertion, and removal |
