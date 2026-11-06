@@ -1,0 +1,4 @@
+/src/*.o
+/libcds.a
+/examples/demo
+/examples/demo.exe

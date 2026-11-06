@@ -1,4 +1,6 @@
 #include "linked_list.h"
+#include <limits.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 void list_init(LinkedList *list)
@@ -9,7 +11,12 @@ void list_init(LinkedList *list)
 
 void list_push_front(LinkedList *list, int value)
 {
-    Node *new_node = malloc(sizeof(Node));
+    if (list->size == INT_MAX)
+        return;
+
+    Node *new_node = malloc(sizeof *new_node);
+    if (new_node == NULL)
+        return;
 
     new_node->data = value;
     new_node->next = list->head;
@@ -20,7 +27,12 @@ void list_push_front(LinkedList *list, int value)
 
 void list_push_back(LinkedList *list, int value)
 {
-    Node *new_node = malloc(sizeof(Node));
+    if (list->size == INT_MAX)
+        return;
+
+    Node *new_node = malloc(sizeof *new_node);
+    if (new_node == NULL)
+        return;
 
     new_node->data = value;
     new_node->next = NULL;
@@ -96,6 +108,7 @@ void list_remove(LinkedList *list, int value)
         previous->next = current->next;  // Remove another node
 
     free(current);
+    list->size--;
 }
 
 void list_free(LinkedList *list)
@@ -112,5 +125,5 @@ void list_free(LinkedList *list)
         free(temp);
     }
 
-    list->head = NULL;
+    list_init(list);
 }
