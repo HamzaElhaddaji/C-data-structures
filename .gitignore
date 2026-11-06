@@ -2,3 +2,5 @@
 /libcds.a
 /examples/demo
 /examples/demo.exe
+/tests/test_structures
+/tests/test_structures.exe
